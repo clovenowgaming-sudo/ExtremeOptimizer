@@ -1,0 +1,54 @@
+{
+  "geode": "5.11.2",
+  "gd": {
+    "win": "2.2081",
+    "android": "2.2081"
+  },
+  "version": "v1.0.0",
+  "id": "vinz.lowend-optimizer",
+  "name": "Low End Optimizer",
+  "developer": "Vinz",
+  "description": "Disables heavy visual effects for low end devices without touching physics.",
+  "settings": {
+    "only-in-level": {
+      "type": "bool",
+      "name": "Only Inside Levels",
+      "description": "Apply optimizations only while playing a level.",
+      "default": true
+    },
+    "disable-particles": {
+      "type": "bool",
+      "name": "Disable Particles",
+      "default": true
+    },
+    "particle-amount": {
+      "type": "int",
+      "name": "Particle Amount (%)",
+      "description": "Used when particles are not fully disabled.",
+      "default": 25,
+      "min": 0,
+      "max": 100,
+      "control": { "slider": true }
+    },
+    "disable-shake": {
+      "type": "bool",
+      "name": "Disable Camera Shake",
+      "default": true
+    },
+    "disable-death-effect": {
+      "type": "bool",
+      "name": "Disable Death Effect",
+      "default": true
+    },
+    "disable-wave-trail": {
+      "type": "bool",
+      "name": "Disable Wave Trail",
+      "default": false
+    },
+    "disable-streak": {
+      "type": "bool",
+      "name": "Disable Motion Streak / Trail",
+      "default": true
+    }
+  }
+}
