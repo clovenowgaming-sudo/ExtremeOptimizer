@@ -99,7 +99,7 @@ class $modify(EOObject, GameObject) {
 
     void activateObject() {
         if (opt("static-orbs") && active()) {
-            m_useAudioScale = false;
+            m_usesAudioScale = false;
         }
         GameObject::activateObject();
         if (opt("hide-decoration") && active() && m_objectType == GameObjectType::Decoration) {
