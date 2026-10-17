@@ -8,7 +8,7 @@
   "id": "clv.extreme-optimizer",
   "name": "Extreme Optimizer",
   "developer": "clv",
-  "description": "Disables everything heavy and laggy (glow, particles, trails, effects) on phone and PC without touching physics.",
+  "description": "Disables everything heavy and laggy (glow, particles, trails, effects) on phone and PC without touching physics or the level.",
   "settings": {
     "only-in-level": {
       "type": "bool",
@@ -28,6 +28,24 @@
     "disable-all-glow": {
       "type": "bool",
       "name": "Disable All Object Glow",
+      "default": true
+    },
+    "disable-orb-effect": {
+      "type": "bool",
+      "name": "Disable Orb Click Effect",
+      "description": "Removes the ring and glow when an orb is clicked.",
+      "default": true
+    },
+    "disable-pad-glow": {
+      "type": "bool",
+      "name": "Disable Pad Glow",
+      "description": "Removes the shine when a jump pad is used.",
+      "default": true
+    },
+    "static-orbs": {
+      "type": "bool",
+      "name": "Static Orbs and Pads",
+      "description": "Orbs and pads no longer pulse or scale to the music.",
       "default": true
     },
     "disable-particles": {

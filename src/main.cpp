@@ -6,6 +6,7 @@
 #include <Geode/modify/PlayerObject.hpp>
 #include <Geode/modify/HardStreak.hpp>
 #include <Geode/modify/GameObject.hpp>
+#include <Geode/modify/RingObject.hpp>
 
 using namespace geode::prelude;
 
@@ -74,6 +75,13 @@ class $modify(EOWave, HardStreak) {
     }
 };
 
+class $modify(EORing, RingObject) {
+    void spawnCircle() {
+        if (opt("disable-orb-effect") && active()) return;
+        RingObject::spawnCircle();
+    }
+};
+
 class $modify(EOObject, GameObject) {
     void addGlow(gd::string frame) {
         if (active()) {
@@ -84,7 +92,15 @@ class $modify(EOObject, GameObject) {
         GameObject::addGlow(frame);
     }
 
+    void playShineEffect() {
+        if (opt("disable-pad-glow") && active()) return;
+        GameObject::playShineEffect();
+    }
+
     void activateObject() {
+        if (opt("static-orbs") && active()) {
+            m_useAudioScale = false;
+        }
         GameObject::activateObject();
         if (opt("hide-decoration") && active() && m_objectType == GameObjectType::Decoration) {
             this->setVisible(false);
