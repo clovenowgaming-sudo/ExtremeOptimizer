@@ -124,17 +124,3 @@ class $modify(EOWaveRing, CCCircleWave) {
     }
 };
 
-class $modify(EOPower, GameObject) {
-    void powerOnObject(int id) {
-        if (active()) {
-            bool isRing = typeinfo_cast<RingObject*>(this) != nullptr;
-            bool isPad = m_objectType == GameObjectType::YellowJumpPad
-                || m_objectType == GameObjectType::PinkJumpPad
-                || m_objectType == GameObjectType::GravityPad
-                || m_objectType == GameObjectType::RedJumpPad;
-            if (isRing && opt("disable-orb-effect")) return;
-            if (isPad && opt("disable-pad-glow")) return;
-        }
-        GameObject::powerOnObject(id);
-    }
-};
