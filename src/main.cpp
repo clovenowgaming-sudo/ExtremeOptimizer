@@ -7,6 +7,8 @@
 #include <Geode/modify/HardStreak.hpp>
 #include <Geode/modify/GameObject.hpp>
 #include <Geode/modify/RingObject.hpp>
+#include <Geode/modify/GhostTrailEffect.hpp>
+#include <Geode/modify/CCCircleWave.hpp>
 
 using namespace geode::prelude;
 
@@ -105,5 +107,34 @@ class $modify(EOObject, GameObject) {
         if (opt("hide-decoration") && active() && m_objectType == GameObjectType::Decoration) {
             this->setVisible(false);
         }
+    }
+};
+
+class $modify(EOGhost, GhostTrailEffect) {
+    void trailSnapshot(float dt) {
+        if (opt("disable-ghost-trail") && active()) return;
+        GhostTrailEffect::trailSnapshot(dt);
+    }
+};
+
+class $modify(EOWaveRing, CCCircleWave) {
+    void draw() {
+        if (opt("disable-circle-wave") && active()) return;
+        CCCircleWave::draw();
+    }
+};
+
+class $modify(EOPower, GameObject) {
+    void powerOnObject(int id) {
+        if (active()) {
+            bool isRing = typeinfo_cast<RingObject*>(this) != nullptr;
+            bool isPad = m_objectType == GameObjectType::YellowJumpPad
+                || m_objectType == GameObjectType::PinkJumpPad
+                || m_objectType == GameObjectType::GravityPad
+                || m_objectType == GameObjectType::RedJumpPad;
+            if (isRing && opt("disable-orb-effect")) return;
+            if (isPad && opt("disable-pad-glow")) return;
+        }
+        GameObject::powerOnObject(id);
     }
 };

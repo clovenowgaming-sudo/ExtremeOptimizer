@@ -82,6 +82,17 @@
       "name": "Disable Motion Streak / Trail",
       "default": true
     },
+    "disable-ghost-trail": {
+      "type": "bool",
+      "name": "Disable Ghost Trail",
+      "default": true
+    },
+    "disable-circle-wave": {
+      "type": "bool",
+      "name": "Disable Circle Wave Effects",
+      "description": "Removes the expanding ring from orbs and portals.",
+      "default": true
+    },
     "hide-background": {
       "type": "bool",
       "name": "Hide Background",
