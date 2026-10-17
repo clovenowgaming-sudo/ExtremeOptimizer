@@ -8,106 +8,104 @@
   "id": "clv.extreme-optimizer",
   "name": "Extreme Optimizer",
   "developer": "clv",
-  "description": "Disables everything heavy and laggy (glow, particles, trails, effects) on phone and PC without touching physics or the level.",
+  "description": "Disables everything heavy and laggy (glow, particles, trails, effects) on phone and PC, plus click between frames.",
+  "incompatibilities": {
+    "syzzi.click_between_frames": ">=1.0.0",
+    "zmx.cbf-lite": ">=1.0.0"
+  },
   "settings": {
-    "only-in-level": {
-      "type": "bool",
-      "name": "Only Inside Levels",
-      "default": true
-    },
-    "disable-block-glow": {
-      "type": "bool",
-      "name": "Disable Block Glow",
-      "default": true
-    },
-    "disable-spike-glow": {
-      "type": "bool",
-      "name": "Disable Spike Glow",
-      "default": true
-    },
-    "disable-all-glow": {
-      "type": "bool",
-      "name": "Disable All Object Glow",
-      "default": true
-    },
-    "disable-orb-effect": {
-      "type": "bool",
-      "name": "Disable Orb Click Effect",
-      "description": "Removes the ring and glow when an orb is clicked.",
-      "default": true
-    },
-    "disable-pad-glow": {
-      "type": "bool",
-      "name": "Disable Pad Glow",
-      "description": "Removes the shine when a jump pad is used.",
-      "default": true
-    },
-    "static-orbs": {
-      "type": "bool",
-      "name": "Static Orbs and Pads",
-      "description": "Orbs and pads no longer pulse or scale to the music.",
-      "default": true
-    },
-    "disable-particles": {
-      "type": "bool",
-      "name": "Disable Particles",
-      "default": true
-    },
+    "only-in-level": { "type": "bool", "name": "Only Inside Levels", "default": true },
+    "disable-block-glow": { "type": "bool", "name": "Disable Block Glow", "default": true },
+    "disable-spike-glow": { "type": "bool", "name": "Disable Spike Glow", "default": true },
+    "disable-all-glow": { "type": "bool", "name": "Disable All Object Glow", "default": true },
+    "disable-orb-effect": { "type": "bool", "name": "Disable Orb Click Effect", "default": true },
+    "disable-pad-glow": { "type": "bool", "name": "Disable Pad Glow", "default": true },
+    "static-orbs": { "type": "bool", "name": "Static Orbs and Pads", "default": true },
+    "disable-particles": { "type": "bool", "name": "Disable Particles", "default": true },
     "particle-amount": {
       "type": "int",
       "name": "Particle Amount (%)",
-      "description": "Used when particles are not fully disabled.",
       "default": 0,
       "min": 0,
       "max": 100,
       "control": { "slider": true }
     },
-    "disable-shake": {
+    "disable-shake": { "type": "bool", "name": "Disable Camera Shake", "default": true },
+    "disable-death-effect": { "type": "bool", "name": "Disable Death Effect", "default": true },
+    "disable-wave-trail": { "type": "bool", "name": "Disable Wave Trail", "default": true },
+    "disable-streak": { "type": "bool", "name": "Disable Motion Streak / Trail", "default": true },
+    "disable-ghost-trail": { "type": "bool", "name": "Disable Ghost Trail", "default": true },
+    "disable-circle-wave": { "type": "bool", "name": "Disable Circle Wave Effects", "default": true },
+    "hide-background": { "type": "bool", "name": "Hide Background", "default": true },
+    "hide-ground": { "type": "bool", "name": "Hide Ground", "default": false },
+    "hide-decoration": { "type": "bool", "name": "Hide Decoration Objects", "default": false },
+    "functionality-category": { "name": "Functionality", "type": "title" },
+    "soft-toggle": {
+      "name": "Disable CBF",
+      "description": "Disable CBF/CoS without needing to restart GD. This option does not disable physics bypass if you have it enabled!",
       "type": "bool",
-      "name": "Disable Camera Shake",
-      "default": true
-    },
-    "disable-death-effect": {
-      "type": "bool",
-      "name": "Disable Death Effect",
-      "default": true
-    },
-    "disable-wave-trail": {
-      "type": "bool",
-      "name": "Disable Wave Trail",
-      "default": true
-    },
-    "disable-streak": {
-      "type": "bool",
-      "name": "Disable Motion Streak / Trail",
-      "default": true
-    },
-    "disable-ghost-trail": {
-      "type": "bool",
-      "name": "Disable Ghost Trail",
-      "default": true
-    },
-    "disable-circle-wave": {
-      "type": "bool",
-      "name": "Disable Circle Wave Effects",
-      "description": "Removes the expanding ring from orbs and portals.",
-      "default": true
-    },
-    "hide-background": {
-      "type": "bool",
-      "name": "Hide Background",
-      "default": true
-    },
-    "hide-ground": {
-      "type": "bool",
-      "name": "Hide Ground",
       "default": false
     },
-    "hide-decoration": {
+    "safe-mode": {
+      "name": "Safe Mode",
+      "description": "Disable progress & stats on rated levels.",
       "type": "bool",
-      "name": "Hide Decoration Objects",
-      "description": "Hides objects without hitbox. Changes how the level looks.",
       "default": false
+    },
+    "click-on-steps": {
+      "name": "Click on Steps",
+      "description": "Only register inputs with 240TPS precision. Should have identical physics to vanilla.",
+      "type": "bool",
+      "default": false
+    },
+    "performance-category": { "name": "Performance", "type": "title", "platforms": ["win"] },
+    "mouse-fix": {
+      "name": "Reduce Mouse Lag",
+      "description": "Reduce lag when using high polling rate mice.\nExperimental, may break things.",
+      "type": "bool",
+      "default": false,
+      "platforms": ["win"]
+    },
+    "precision-fix": {
+      "name": "Precision Fix",
+      "description": "Improve input precision by preventing framerate desync.\nExperimental, may break things.",
+      "type": "bool",
+      "default": true,
+      "platforms": ["win"]
+    },
+    "pb-category": { "name": "Physics Bypass", "type": "title", "platforms": ["win"] },
+    "physics-bypass": {
+      "name": "Enable Physics Bypass",
+      "description": "Reduces stuttering on some FPS values. Active even if \"Disable CBF\" is checked.\n\nTHIS WILL ALTER PHYSICS AND MAY BREAK SOME LEVELS! DON'T USE THIS IF YOUR LIST/LEADERBOARD BANS PHYSICS BYPASS!",
+      "type": "bool",
+      "default": false,
+      "platforms": ["win"]
+    },
+    "bypass-mode": {
+      "name": "Physics Bypass Mode",
+      "description": "2.2 mode means as few collision checks per frame as possible (with a minimum of 240 checks per second).\n\n2.1 mode means 4 collision checks per frame at 60fps or above",
+      "type": "string",
+      "one-of": ["2.2", "2.1"],
+      "default": "2.2",
+      "platforms": ["win"]
+    },
+    "linux-category": { "name": "Linux", "type": "title", "platforms": ["win"] },
+    "wine-workaround": {
+      "name": "Wine Workaround",
+      "description": "Wine doesn't let you get keyboard input between frames, so this is a workaround. Only disable if experiencing issues.",
+      "type": "bool",
+      "default": true,
+      "requires-restart": true,
+      "enable-if": "saved:you-must-be-on-linux-to-change-this",
+      "platforms": ["win"]
+    },
+    "right-click": {
+      "name": "Right Click P2",
+      "description": "Use right click for player 2 jump.",
+      "type": "bool",
+      "default": false,
+      "enable-if": "saved:you-must-be-on-linux-to-change-this && wine-workaround",
+      "platforms": ["win"]
     }
   }
 }
